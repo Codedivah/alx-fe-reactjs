@@ -3,7 +3,7 @@ function WelcomeMessage() {
         <div>
             <h1>Hello everyone, I am learning React at ALX!.</h1>
             <p>This is a simple JSX component.</p>
-            <P>I am learning about JSX!.</P>
+            <p>I am learning about JSX!.</p>
         </div>
     );
 }
