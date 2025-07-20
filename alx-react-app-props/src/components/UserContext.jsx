@@ -1,18 +1,25 @@
-import React from 'react';
-import { useUser } from '../contexts/UserContext';
+import React, { createContext, useContext } from 'react';
 
-const UserInfo = () => {
-  // Step 4: Clean up - no more userData props needed
-  const userData = useUser();
+// Step 1: Initialize a new context using React.createContext()
+const UserContext = createContext();
 
+// Custom hook to use the UserContext
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider');
+  }
+  return context;
+};
+
+// Provider component
+export const UserProvider = ({ children, userData }) => {
   return (
-    <div>
-      <h2>User Information</h2>
-      <p>ID: {userData.id}</p>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.email}</p>
-    </div>
+    <UserContext.Provider value={userData}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
-export default UserInfo;
+// Export the context
+export default UserContext;
