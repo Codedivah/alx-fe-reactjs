@@ -1,18 +1,8 @@
-import React from 'react';
-import { useUser } from '../contexts/UserContext';
+// src/UserInfo.jsx
+import UserDetails from './UserDetails';
 
-const UserInfo = () => {
-  // Step 4: Clean up - no more userData props needed
-  const userData = useUser();
-
-  return (
-    <div>
-      <h2>User Information</h2>
-      <p>ID: {userData.id}</p>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.email}</p>
-    </div>
-  );
-};
+function UserInfo() {
+  return <UserDetails />;
+}
 
 export default UserInfo;

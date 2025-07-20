@@ -1,17 +1,8 @@
-import React from 'react';
-import UserDetails from './UserDetails';
+// src/ProfilePage.jsx
 import UserInfo from './UserInfo';
 
-const ProfilePage = () => {
-   
-  return (
-    <div>
-      <h1>User Profile</h1>
-      <UserDetails />
-      <UserInfo />
-      <p>✨ Refactored with React Context API - No more prop drilling!</p>
-    </div>
-  );
-};
+function ProfilePage() {
+  return <UserInfo />;
+}
 
 export default ProfilePage;

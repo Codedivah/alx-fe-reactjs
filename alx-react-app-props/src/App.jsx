@@ -1,25 +1,14 @@
-import React from 'react';
+// src/App.jsx
 import ProfilePage from './components/ProfilePage';
-import { UserProvider } from './contexts/UserContext';
+import UserContext from './UserContext';
 
 function App() {
-  // Sample user data
-  const userData = {
-    id: 1,
-    name: 'Sarah Johnson',
-    email: 'sarah.johnson@example.com',
-    role: 'Senior Frontend Developer',
-    location: 'San Francisco, CA',
-    joinDate: 'January 2022'
-  };
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
   return (
-    <div>
-      {/* Step 2: Wrap ProfilePage in UserContext.Provider and pass userData as value */}
-      <UserProvider userData={userData}>
-        <ProfilePage />
-      </UserProvider>
-    </div>
+    <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
   );
 }
 
