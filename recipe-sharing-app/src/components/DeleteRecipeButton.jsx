@@ -1,5 +1,6 @@
 import { useRecipeStore } from '../store/recipeStore';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface DeleteRecipeButtonProps {
   recipeId: number;
@@ -9,11 +10,13 @@ interface DeleteRecipeButtonProps {
 const DeleteRecipeButton = ({ recipeId, onDeleteSuccess }: DeleteRecipeButtonProps) => {
   const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
   const [showConfirm, setShowConfirm] = useState(false);
+   const navigate = useNavigate();
 
   const handleDelete = () => {
     deleteRecipe(recipeId);
     if (onDeleteSuccess) {
       onDeleteSuccess();
+       navigate('/');
     }
   };
 
