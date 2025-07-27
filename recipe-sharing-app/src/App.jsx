@@ -8,6 +8,8 @@ import useRecipeStore from './store/recipeStore.js'
 
 function App() {
   const [count, setCount] = useState(0)
+  const recipes = useRecipeStore((state) => state.recipes)
+
 
   return (
     <>
@@ -21,7 +23,7 @@ function App() {
       </div>
       <RecipeList/>
       <AddRecipeForm/>
-      <useRecipeStore />
+      
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
