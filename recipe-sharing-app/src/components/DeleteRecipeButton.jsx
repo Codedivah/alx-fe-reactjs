@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface DeleteRecipeButtonProps {
-  recipeId: number;
+  recipeId: string;
   onDeleteSuccess?: () => void;
 }
 
@@ -16,8 +16,9 @@ const DeleteRecipeButton = ({ recipeId, onDeleteSuccess }: DeleteRecipeButtonPro
     deleteRecipe(recipeId);
     if (onDeleteSuccess) {
       onDeleteSuccess();
-       navigate('/');
+      
     }
+     navigate('/');
   };
 
   const handleConfirmClick = () => {
