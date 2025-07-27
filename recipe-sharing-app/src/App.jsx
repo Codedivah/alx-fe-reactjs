@@ -1,25 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import RecipeList from './components/RecipeList.js'
-import AddRecipeForm from './components/AddRecipeForm.js'
+import RecipeList from './components/RecipeList.jsx'
+import AddRecipeForm from './components/AddRecipeForm.jsx'
 import useRecipeStore from './components/recipeStore.js'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
   const recipes = useRecipeStore((state) => state.recipes)
 
 
   return (
     <>
+    <nav>
+        <Link to="/">Recipes</Link>
+      </nav>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+       <Router>
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/add" element={<AddRecipeForm />} />
+        <Route path="/recipes/:id" element={<RecipeDetails />} />
+      </Routes>
+    </Router>
+  )
+
       </div>
       <RecipeList/>
       <AddRecipeForm/>
