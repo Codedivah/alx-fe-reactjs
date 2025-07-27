@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import RecipeList from './components/RecipeList.js'
 import AddRecipeForm from './components/AddRecipeForm.js'
+import useRecipeStore from './store/recipeStore.js'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
       </div>
       <RecipeList/>
       <AddRecipeForm/>
+      <useRecipeStore />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
