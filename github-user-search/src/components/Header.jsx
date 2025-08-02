@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <header>
-      <h1>GitHub User Search</h1>
+      <h1>GitHub User</h1>
     </header>
   )
 }
