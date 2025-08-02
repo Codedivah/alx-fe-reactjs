@@ -6,7 +6,15 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route 
+          path="/" 
+          element={
+            <div className="text-center p-4">
+              <h1 className="text-3xl font-bold text-blue-600">Hello Tailwind!</h1>
+              <Home />
+            </div>
+          } 
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
