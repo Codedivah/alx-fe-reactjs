@@ -1,17 +1,21 @@
+import axios from 'axios'
+
+// GitHub API base URL
 const API_BASE_URL = 'https://api.github.com/users/'
 
-export const fetchGitHubUser = async (username) => {
+// Function to fetch user data
+export const fetchUserData = async (username) => {
   const apiKey = import.meta.env.VITE_APP_GITHUB_API_KEY
 
-  const response = await fetch(`${API_BASE_URL}${username}`, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`
-    }
-  })
+  try {
+    const response = await axios.get(`${API_BASE_URL}${username}`, {
+      headers: {
+        Authorization: `Bearer ${apiKey}`
+      }
+    })
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch user data')
+    return response.data
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Failed to fetch GitHub user')
   }
-
-  return response.json()
 }
