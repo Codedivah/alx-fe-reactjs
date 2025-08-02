@@ -8,7 +8,7 @@ export const fetchUserData = (username, location, minRepos, page = 1, perPage = 
   if (location) query += ` location:${location}`
   if (minRepos) query += ` repos:>=${minRepos}`
 
-  return axios.get('https://api.github.com/search/users', {
+  return axios.get('https://api.github.com/search/users?q', {
     params: {
       q: query.trim(),
       page,
