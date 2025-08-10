@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 export const fetchUserData = (username, location, minRepos, page = 1, perPage = 30) => {
   let query = ''
 
@@ -8,7 +7,10 @@ export const fetchUserData = (username, location, minRepos, page = 1, perPage = 
   if (location) query += ` location:${location}`
   if (minRepos) query += ` repos:>=${minRepos}`
 
-  return axios.get('https://api.github.com/search/users?q', {
+  return axios.get('https://api.github.com/search/users', {
+    headers: {
+      Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+    },
     params: {
       q: query.trim(),
       page,
