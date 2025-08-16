@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChefHat, Clock, Heart } from 'lucide-react';
+import { ChefHat, Clock, Heart, Plus } from 'lucide-react';
 
 interface Recipe {
   id: number;
@@ -56,11 +56,22 @@ const HomePage: React.FC = () => {
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center space-x-3">
-            <ChefHat className="w-8 h-8 text-orange-500" />
-            <h1 className="text-3xl font-bold text-gray-900">Recipe Collection</h1>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <ChefHat className="w-8 h-8 text-orange-500" />
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">Recipe Collection</h1>
+                <p className="text-gray-600 mt-1">Discover and explore amazing recipes from around the world</p>
+              </div>
+            </div>
+            <Link
+              to="/add-recipe"
+              className="inline-flex items-center space-x-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-1"
+            >
+              <Plus className="w-5 h-5" />
+              <span className="hidden sm:inline">Add Recipe</span>
+            </Link>
           </div>
-          <p className="text-gray-600 mt-2">Discover and explore amazing recipes from around the world</p>
         </div>
       </header>
 
@@ -112,9 +123,12 @@ const HomePage: React.FC = () => {
                     <Clock className="w-4 h-4" />
                     <span className="text-sm">30 min</span>
                   </div>
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:shadow-lg">
+                  <Link
+                    to={`/recipe/${recipe.id}`}
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:shadow-lg"
+                  >
                     View Recipe
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
