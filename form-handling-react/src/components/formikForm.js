@@ -1,4 +1,4 @@
-import {Formik, Form, Field,˜ErrorMessage} from 'formik';
+import {Formik, Form, Field,ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 
 const FormikForm = () => {
@@ -14,8 +14,10 @@ const FormikForm = () => {
         password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required')
     });
 
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, { resetForm }) => {
         console.log('Form data', values);
+        alert('Form submitted successfully!');
+        resetForm();
     };
 
     return (

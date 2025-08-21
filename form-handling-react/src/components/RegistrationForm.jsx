@@ -1,62 +1,55 @@
 import { useState } from 'react';
 
 const RegistrationForm = () => {
-    const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({ ...prevState, [name]: value }));
-        setError(''); // clear error when user types
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Basic validation
-        if (!formData.username || !formData.email || !formData.password) {
+        if (!username || !email || !password) {
             setError('All fields are required');
             return;
         }
 
-        // Email format check (simple version)
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
+        if (!emailRegex.test(email)) {
             setError('Please enter a valid email');
             return;
         }
 
-        // If all good
-        console.log(formData);
+        // If validation passes
+        setError('');
+        console.log({ username, email, password });
         alert('Form submitted successfully!');
     };
 
     return (
         <form onSubmit={handleSubmit}>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            
+
             <input
                 type="text"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter username"
             />
             <input
                 type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter email"
             />
             <input
                 type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter password"
             />
-            <button type="submit">Submit</button>
+            <button type="submit">Register</button>
         </form>
     );
 };
