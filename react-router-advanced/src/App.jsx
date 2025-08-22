@@ -2,10 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Link, Route, Routes } from 'react-router-dom'
 import Profile from './components/Profile'  
 import ProfileDetails from './components/ProfileDetails'
 import ProfileSettings from './components/ProfileSettings'
+
 
 
 function App() {
