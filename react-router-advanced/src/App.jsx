@@ -23,14 +23,12 @@ function App() {
           </ul> 
 
         </nav>
-        <Routes>
-          <Route path="/Profile" element={<Profile />}>
 
-            <Route path="ProfileDetails" element={<ProfileDetails />} />
-            <Route path="ProfileSettings" element={<ProfileSettings />} />
+       <Routes>
+          <Route path="/Profile" element={<Profile />} />
+       </Routes>
 
-            </Route>
-          </Routes>
+        
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
