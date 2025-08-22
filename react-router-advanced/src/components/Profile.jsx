@@ -1,18 +1,23 @@
-import {Link, Outlet} from "react-router-dom";
-
+import { Routes, Route, Link } from "react-router-dom"
+import ProfileDetails from "./ProfileDetails"
+import ProfileSettings from "./ProfileSettings"
 
 function Profile() {
   return (
     <div>
       <h1>Profile Page</h1>
       <nav>
-        <ul>
-          <li><Link to="ProfileDetails">Details</Link></li>
-          <li><Link to="ProfileSettings">Settings</Link></li>
-        </ul>
+        <Link to="details">Profile Details</Link> |{" "}
+        <Link to="settings">Profile Settings</Link>
       </nav>
-      <Outlet />
+
+      {/* Define nested routes here */}
+      <Routes>
+        <Route path="details" element={<ProfileDetails />} />
+        <Route path="settings" element={<ProfileSettings />} />
+      </Routes>
     </div>
-  );
+  )
 }
-export default Profile;
+
+export default Profile

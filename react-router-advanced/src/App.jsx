@@ -4,8 +4,6 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter as Link, Route, Routes } from 'react-router-dom'
 import Profile from './components/Profile'  
-import ProfileDetails from './components/ProfileDetails'
-import ProfileSettings from './components/ProfileSettings'
 
 
 
