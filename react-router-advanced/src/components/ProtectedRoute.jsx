@@ -1,13 +1,13 @@
 // src/components/ProtectedRoute.jsx
-import { Navigate } from "react-router-dom"
-import { fakeAuth } from "../auth"
+import { Navigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
-function ProtectedRoute({ children }) {
-  if (!fakeAuth.isAuthenticated) {
-    // if not logged in, redirect to home or login page
-    return <Navigate to="/" replace />
+export default function ProtectedRoute({ children }) {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
   }
-  return children
-}
 
-export default ProtectedRoute
+  return children;
+}
