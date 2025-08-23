@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 
 function TodoList() {
-  // Initial state with some demo todos
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Build a Todo App", completed: true },
+    { id: 2, text: "Build Todo App", completed: true },
     { id: 3, text: "Master React Router", completed: false }
   ]);
 
   const [newTodo, setNewTodo] = useState("");
 
-  // Add a new todo
   const handleAddTodo = (e) => {
     e.preventDefault();
     if (!newTodo.trim()) return;
@@ -21,10 +19,9 @@ function TodoList() {
       completed: false,
     };
     setTodos([...todos, newTask]);
-    setNewTodo(""); // clear input
+    setNewTodo("");
   };
 
-  // Toggle completed
   const handleToggle = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -33,7 +30,6 @@ function TodoList() {
     );
   };
 
-  // Delete todo
   const handleDelete = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -42,24 +38,22 @@ function TodoList() {
     <div className="p-4 max-w-md mx-auto">
       <h2 className="text-xl font-bold mb-4">Todo List</h2>
 
-      {/* Add todo form */}
       <form onSubmit={handleAddTodo} className="flex gap-2 mb-4">
         <input
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Enter a new todo"
+          placeholder="Add a new todo"
           className="border px-2 py-1 flex-1 rounded"
         />
         <button
           type="submit"
           className="bg-blue-500 text-white px-3 py-1 rounded"
         >
-          Add
+          Add Todo
         </button>
       </form>
 
-      {/* Todo list */}
       <ul>
         {todos.map((todo) => (
           <li
@@ -88,3 +82,4 @@ function TodoList() {
 }
 
 export default TodoList;
+
