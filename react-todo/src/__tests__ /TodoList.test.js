@@ -2,8 +2,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import TodoList from "../components/TodoList";
 
-describe("TodoList component", () => {
-  test("renders without crashing", () => {
+describe("TodoList Component", () => {
+  test("renders TodoList without crashing", () => {
     render(<TodoList />);
     expect(screen.getByText(/Todo List/i)).toBeInTheDocument();
   });
